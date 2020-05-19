@@ -1,6 +1,5 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { PersonService } from './person.service';
-import { HttpClient } from '@angular/common/http';
 import { BaseExample } from './base-example';
 
 @Component({
@@ -43,12 +42,13 @@ export class HttpErrorClientSideComplexComponent extends BaseExample {
 //...
 }
   `;
-  constructor(private personService: PersonService, public element: ElementRef, public httpClient: HttpClient) {
-    super(element, httpClient);
+  constructor(private personService: PersonService, public renderer: Renderer2) {
+    super(renderer);
 
     const callPersonService = () => {
       this.personService.getName();
     };
+
     this.createError = () => {
       setTimeout(callPersonService, 0);
     };

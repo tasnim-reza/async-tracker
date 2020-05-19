@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { highlightBlock } from 'highlight.js';
 
 @Component({
@@ -45,13 +45,12 @@ export class BasicSetTimeoutComponent {
 
   public isLoading = false;
 
-  constructor(public element: ElementRef) {
+  constructor(public renderer: Renderer2) {
   }
 
-  ngOnInit() {
-    const el = this.element.nativeElement.querySelector('pre code');
+  ngAfterViewInit() {
+    const el = this.renderer.selectRootElement('#sampleCode', true);
     if (el) {
-      el.innerHTML = this.codeSample;
       highlightBlock(el);
     }
   }

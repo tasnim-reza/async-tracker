@@ -1,18 +1,18 @@
-import { OnInit, ElementRef } from "@angular/core";
+import { Renderer2 } from "@angular/core";
 import { highlightBlock } from "highlight.js";
-import { HttpClient } from "@angular/common/http";
 
-export class BaseExample implements OnInit {
-    public codeSample;
+export class BaseExample {
+    public codeSample: string;
     public createError: Function;
     public isLoading = false;
-    constructor(public element: ElementRef, public httpClient?: HttpClient) {
+    constructor(public renderer: Renderer2) {
     }
 
-    ngOnInit() {
-        const el = this.element.nativeElement.querySelector('pre code');
-        el.innerHTML = this.codeSample;
-        highlightBlock(el);
+    ngAfterViewInit() {
+        const el = this.renderer.selectRootElement('#sampleCode', true);
+        if (el) {
+            highlightBlock(el);
+        }
     }
 
     public showLiveError() {

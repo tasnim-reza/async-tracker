@@ -4,7 +4,7 @@
         <mat-card-subtitle>The API call is fine but it failed to parse.</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <pre><code class="typescript"></code></pre>
+        <pre><code id="sampleCode" class="typescript" [innerHTML]="codeSample"></code></pre>
     </mat-card-content>
     <mat-card-actions>
         <button mat-raised-button color="warn" (click)="showLiveError()">Show Live Error</button>
