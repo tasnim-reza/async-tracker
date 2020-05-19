@@ -1,18 +1,11 @@
-import { NgZone } from '@angular/core';
-import { IAsyncTraceConfig, IDeviceInfo, IUserInfo, IClientError } from './interfaces/async-trace-sdk-types';
-import { AsyncTraceUtil } from './async-trace-util';
-import { LongStackTrace } from './long-stacktrace';
-import { sendErrorHook } from './send-error';
-import { httpRequestKey } from './http-request';
+import { AsyncTraceZone } from './shared/async-trace-zone';
+import { IAsyncTraceConfig } from './interfaces/async-trace-sdk-types';
 declare class AsyncTrace {
-    private platformConfig;
+    private sdkConfig?;
+    private error?;
     constructor();
-    setUp(platformConfig: IAsyncTraceConfig): AsyncTrace;
-    getAsyncTraceZone(): NgZone;
-    getAsyncTraceFullStackZone(): NgZone;
-    private isValidApiKey;
+    setUp(config: Partial<IAsyncTraceConfig>): this;
+    createZone(): Error[] | (AsyncTraceZone | null)[];
 }
-declare const asyncTrace: AsyncTrace;
-declare const asyncTraceUtil: AsyncTraceUtil;
-declare const handleSyncError: (error: any) => void;
-export { asyncTrace, AsyncTraceUtil, asyncTraceUtil, IDeviceInfo, IUserInfo, LongStackTrace, IClientError, handleSyncError, httpRequestKey, sendErrorHook };
+export declare const asyncTrace: AsyncTrace;
+export {};

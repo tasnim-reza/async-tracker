@@ -1,4 +1,4 @@
-import { Task } from './interfaces/angular-zone-types';
+import { Task } from '../interfaces/angular-zone-types';
 export declare class LongStackTrace {
     error: Error;
     timestamp: Date;

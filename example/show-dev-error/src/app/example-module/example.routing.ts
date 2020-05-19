@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { ExampleLayoutComponent } from './example-layout/example-layout.component';
 import { BasicSetTimeoutComponent } from './basic-settimeout/basic-settimeout.component';
-import { HttpErrorClientSideComplexComponent } from './http-error-client-side-complex/http-error-client-side-complex.component';
+import { HttpErrorClientSideComponent } from './http-error-client-side/http-error-client-side.component';
 
 const childExampleRoutes: Routes = [
     {
@@ -14,7 +14,7 @@ const childExampleRoutes: Routes = [
     },
     {
         path: 'xmlhttprequest',
-        component: HttpErrorClientSideComplexComponent
+        component: HttpErrorClientSideComponent
     }
 ]
 

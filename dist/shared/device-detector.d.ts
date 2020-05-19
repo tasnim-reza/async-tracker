@@ -1,4 +1,4 @@
-import { IDeviceInfo } from "./interfaces/async-trace-sdk-types";
+import { IDeviceInfo } from "../interfaces/async-trace-sdk-types";
 export declare class DeviceDetector {
     private unknown;
     private nVer;

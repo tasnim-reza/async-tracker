@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpErrorClientSideComplexComponent } from './http-error-client-side-complex/http-error-client-side-complex.component';
+import { HttpErrorClientSideComponent } from './http-error-client-side/http-error-client-side.component';
 
 @NgModule({
   imports: [
@@ -24,7 +24,7 @@ import { HttpErrorClientSideComplexComponent } from './http-error-client-side-co
     BasicSetTimeoutComponent,
     ExampleMenuComponent,
     ExampleLayoutComponent,
-    HttpErrorClientSideComplexComponent
+    HttpErrorClientSideComponent
   ],
 
   providers: [],

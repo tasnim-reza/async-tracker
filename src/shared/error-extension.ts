@@ -1,4 +1,4 @@
-import { ExtendedTask } from './long-stacktrace'
+import { ExtendedTask } from "./extended-task"
 
 export function overrideToJsonImplementation() {
   /* 

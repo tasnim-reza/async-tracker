@@ -1,5 +1,3 @@
-import { LongStackTrace } from '../shared/long-stacktrace'
-
 export interface IDeviceInfo {
   screen: string
   browser: string

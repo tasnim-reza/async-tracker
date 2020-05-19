@@ -1,7 +1,6 @@
 import { AsyncTraceUtil } from './async-trace-util'
 import { Task } from '../interfaces/angular-zone-types'
-
-const ignoreProps = ['Zone', 'zone', '_zone']
+import { ExtendedTask } from './extended-task'
 
 export class LongStackTrace {
   error: Error
@@ -16,8 +15,8 @@ export class LongStackTrace {
     this.error = uncaughtError.stack
       ? uncaughtError
       : caughtError.stack
-      ? caughtError
-      : uncaughtError
+        ? caughtError
+        : uncaughtError
   }
 
   private getStacktraceWithUncaughtError(): Error {
@@ -30,12 +29,5 @@ export class LongStackTrace {
     } catch (err) {
       return err
     }
-  }
-}
-
-export class ExtendedTask {
-  private task: Task
-  constructor(task: Task) {
-    this.task = task
   }
 }

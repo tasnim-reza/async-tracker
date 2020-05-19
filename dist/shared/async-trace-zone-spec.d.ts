@@ -1,4 +1,4 @@
-import { ZoneSpec, ZoneDelegate, Zone, Task, HasTaskState } from './interfaces/angular-zone-types';
+import { ZoneSpec, ZoneDelegate, Zone, Task, HasTaskState } from '../interfaces/angular-zone-types';
 export declare class AsyncTraceZoneSpec implements ZoneSpec {
     name: string;
     longStackTraceLimit: number;

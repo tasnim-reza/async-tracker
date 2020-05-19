@@ -16,7 +16,6 @@ export class ClientSideProcessor {
         const flattenFrames = this.flattenFrames(clientError.frames, clientError.currentFrame);
         // console.error(flattenFrames.join('\n'));
         return flattenFrames.join('\n');
-
     }
 
     private flattenFrames(stacks: LongStackTrace[], currentStacks: Array<string>) {

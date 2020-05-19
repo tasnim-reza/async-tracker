@@ -27,7 +27,6 @@ export class ClientError {
         this.apiKey = ProdErrorConfig.instance.apiKey;
         this.url = window.location.href;
 
-
         if (error instanceof Error && parentTask) {
             this.currentFrame = error.stack ? error.stack.split('\n') : []
             this.error = error.message

@@ -4,11 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { BaseExample } from './base-example';
 
 @Component({
-  selector: 'app-http-error-client-side-complex',
-  templateUrl: './http-error-client-side-complex.component.html',
-  styleUrls: ['./http-error-client-side-complex.component.scss']
+  selector: 'app-http-error-client-side',
+  templateUrl: './http-error-client-side.component.html',
+  styleUrls: ['./http-error-client-side.component.scss']
 })
-export class HttpErrorClientSideComplexComponent extends BaseExample {
+export class HttpErrorClientSideComponent extends BaseExample {
   public codeSample = `
 //This is a base or parent class
 export class BaseExample implements OnInit {

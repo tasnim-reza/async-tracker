@@ -1,7 +1,6 @@
 import { httpRequest } from './http-request'
-import { AsyncTraceUtil } from '../shared/async-trace-util'
 import { DeviceDetector } from '../shared/device-detector'
-import { ZoneDelegate, Zone, Task } from '../interfaces/angular-zone-types'
+import { Task } from '../interfaces/angular-zone-types'
 import { LongStackTrace } from '../shared/long-stacktrace'
 import { ProdErrorConfig } from './prod-error-config'
 import { ClientError } from '../shared/client-error'
@@ -34,11 +33,6 @@ export class SendError {
         url: window.location.href
       }
       clientError.error = error.message
-      // if (clientError.currentFrame) {
-      //   clientError.error = clientError.currentFrame.length
-      //     ? clientError.currentFrame[0]
-      //     : error.message
-      // }
 
       if (ProdErrorConfig.instance._useLocalUrl) {
         console.log('handleSyncError sync error', clientError)

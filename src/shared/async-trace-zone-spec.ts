@@ -8,7 +8,6 @@ import {
   Task,
   HasTaskState
 } from '../interfaces/angular-zone-types'
-import { ProdErrorConfig } from '../prod-error/prod-error-config'
 import { DevErrorConfig } from '../dev-error/dev-error-config'
 import { ClientSideProcessor } from '../dev-error/client-side-processor'
 import { ClientError } from './client-error'
@@ -30,36 +29,27 @@ export class AsyncTraceZoneSpec implements ZoneSpec {
       (currentTask &&
         currentTask.data &&
         (currentTask.data as any)[AsyncTraceUtil.creationTrace]) ||
-      []
-    // if (AsyncTraceConfig.instance._useLocalUrl) {
-    //   console.log('onScheduleTask', trace)
-    // }
-    // console.log('target', currentTask && currentTask)
+      [];
 
-    //
+    //Set a higher limit so we can track all the stack
     if (task.source.includes('XMLHttpRequest')) {
       Error['stackTraceLimit'] = 30
-      // console.log('updated trace limit', new LongStackTrace(currentTask));
     }
 
     trace = [new LongStackTrace(currentTask)].concat(trace)
 
+    //restore to normal limit
     if (task.source.includes('XMLHttpRequest')) {
       Error['stackTraceLimit'] = 15
-      // console.log('updated trace limit', new LongStackTrace(currentTask));
     }
 
     if (trace.length > this.longStackTraceLimit) {
       trace.length = this.longStackTraceLimit
     }
     if (!task.data) task.data = {}
-    if (task.type === 'eventTask') {
-      // Fix issue https://github.com/angular/zone.js/issues/1195,
-      // For event task of browser, by default, all task will share a
-      // singleton instance of data object, we should create a new one here
 
-      // The cast to `any` is required to workaround a closure bug which wrongly applies
-      // URL sanitization rules to .data access.
+    if (task.type === 'eventTask') {
+      // Fix issue https://github.com/angular/zone.js/issues/1195
       ; (task.data as any) = { ...(task.data as any) }
     }
     ; (task.data as any)[AsyncTraceUtil.creationTrace] = trace
@@ -73,18 +63,17 @@ export class AsyncTraceZoneSpec implements ZoneSpec {
     targetZone: Zone,
     error: any
   ): boolean {
-
     // error.stack += '\n    __handled_async_error__';
-    // console.log(error)
+
     const clientError = new ClientError(parentZoneDelegate, currentZone, targetZone, error);
-    let asyncTrace;
-    if (DevErrorConfig.instance.enableDevMode) {
-      asyncTrace = new ClientSideProcessor().process(clientError);
-    } else {
+    let completeStacktrace = new ClientSideProcessor().process(clientError);
+
+    if (!DevErrorConfig.instance.enableDevMode) {
       new SendError().post(clientError);
     }
 
-    return parentZoneDelegate.handleError(targetZone, { error, asyncTrace })
+    // pass original error and completeStacktrace to next error handler
+    return parentZoneDelegate.handleError(targetZone, { error, asyncTrace: completeStacktrace })
   }
 
   properties?: { [key: string]: any }
