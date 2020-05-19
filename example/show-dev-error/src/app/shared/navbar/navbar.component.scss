@@ -1,0 +1,13 @@
+.top-nav-bar {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 8px 16px;
+}
+.flex-spacer {
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+}
+
