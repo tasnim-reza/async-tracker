@@ -50,7 +50,7 @@ To create the `AsyncTracker`  I extends (https://github.com/tasnim-reza/async-tr
 
 The rest of the work is easypeasy! For each task, generates the stacktrace (https://github.com/tasnim-reza/async-tracker/blob/master/src/shared/long-stacktrace.ts) and store them.  When any exception happened to any task, the execution is stopped and the runtime gives us the current error stack. Now we've to move backword and collects all the generated stacktraces, combined them, clean them and finally we get the complete stacktrace Hah! The following picture helps us to understand more clearly
 
-![asynctracker concept](https://github.com/tasnim-reza/async-tracker/blob/master/example/show-dev-error/src/assets/demo/asynctracker concept.PNG?raw=true)
+![asynctracker concept](https://github.com/tasnim-reza/async-tracker/blob/master/example/show-dev-error/src/assets/demo/asynctracker-concept.PNG?raw=true)
 
 ## Demo
 
@@ -58,12 +58,18 @@ I added an example(https://github.com/tasnim-reza/async-tracker/tree/master/exam
 
 `npm run example`
 
-To generate error click `show live error` button and open developer console you'll see the following pictures for `setTimeout` and `XMLHttpRequest` 
+To generate error click `show live error` button and open developer console. Or see the following pictures to follow up. for `setTimeout` and `XMLHttpRequest` 
+
+### setTimeout example
 
 ![setTimeout example](https://github.com/tasnim-reza/async-tracker/blob/master/example/show-dev-error/src/assets/demo/demo1.PNG?raw=true)
 
+### setTimeout console log
+
 ![setTimeout console log](https://github.com/tasnim-reza/async-tracker/blob/master/example/show-dev-error/src/assets/demo/demo2.PNG?raw=true)
 
+### XMLHttpRequest example
 ![XMLHttpRequest example](https://github.com/tasnim-reza/async-tracker/blob/master/example/show-dev-error/src/assets/demo/demo3.PNG?raw=true)
 
+### XMLHttpRequest console log
 ![XMLHttpRequest console log](https://github.com/tasnim-reza/async-tracker/blob/master/example/show-dev-error/src/assets/demo/demo4.PNG?raw=true)
