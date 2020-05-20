@@ -21,6 +21,7 @@
   "scripts": {
     "example": "cd example/show-dev-error/ && ng serve",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts",
+    "install:dependency": "npm install && cd example/show-dev-error/ && npm install",
     "prebuild": "rimraf dist",
     "postbuild": "del-cli dist/**/*.js !dist/async-trace.es5.js !dist/async-trace.umd.js dist/**/*.map && npm run copy:analyzer",
     "lint": "tslint  --project tsconfig.json -t codeFrame 'src/**/*.ts' 'test/**/*.ts'",
