@@ -1,5 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
-import { highlightBlock } from 'highlight.js';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-basic-settimeout',
@@ -45,13 +44,6 @@ export class BasicSetTimeoutComponent {
 
   public isLoading = false;
 
-  constructor(public renderer: Renderer2) {
-  }
-
-  ngAfterViewInit() {
-    const el = this.renderer.selectRootElement('#sampleCode', true);
-    if (el) {
-      highlightBlock(el);
-    }
+  constructor() {
   }
 }

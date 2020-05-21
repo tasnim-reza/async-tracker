@@ -1,4 +1,4 @@
-import { Component, Renderer2 } from '@angular/core';
+import { Component } from '@angular/core';
 import { PersonService } from './person.service';
 import { BaseExample } from './base-example';
 
@@ -42,8 +42,8 @@ export class HttpErrorClientSideComplexComponent extends BaseExample {
 //...
 }
   `;
-  constructor(private personService: PersonService, public renderer: Renderer2) {
-    super(renderer);
+  constructor(private personService: PersonService) {
+    super();
 
     const callPersonService = () => {
       this.personService.getName();

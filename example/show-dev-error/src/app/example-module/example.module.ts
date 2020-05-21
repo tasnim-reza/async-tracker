@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpErrorClientSideComponent } from './http-error-client-side/http-error-client-side.component';
+import { CodeHighlightDirective } from './shared/code-highlight/code-highlight.directive';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { HttpErrorClientSideComponent } from './http-error-client-side/http-erro
     BasicSetTimeoutComponent,
     ExampleMenuComponent,
     ExampleLayoutComponent,
-    HttpErrorClientSideComponent
+    HttpErrorClientSideComponent,
+    CodeHighlightDirective
   ],
 
   providers: [],
