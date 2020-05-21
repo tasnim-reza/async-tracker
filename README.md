@@ -34,11 +34,11 @@ http://localhost:4200/
 
 Writing asynchronous code is easy but solving an asynchronous bug is hard. So what is `asynchronous bug` and why it is so difficult to pinpoint? 
 
-Asynchronous bug: When our call stack involves any of this functions `setimeout`,  `xmlhttprequest`,  `observable` we can say, out code is asynchronous. If we get an exception from any of these functions, then it boils down to an expensive asynchronous bug. 
+Asynchronous bug: When our call stack involves any of this functions `setimeout`,  `xmlhttprequest`,  `observable` we can say, our code is asynchronous. If we get an exception from any of these functions, then it boils down to an expensive asynchronous bug. 
 
 Because of the nature of asynchronous code, the JavaScript runtime (V8) can not give us the full picture. When the exception happens it looses its outer context, except closures.
 
-Why it is hard? I found one fundamental reason is, we can see the complete picture. We can't link the button click and bug. If we look at the stacktraces of the bug, we can see there are a lot of stack frames are missing. What if we get the complete stacktrace then it wouldn't be that hard right?
+Why it is hard? I found one fundamental reason is, we can not see the complete picture. We can't link the button click and bug. If we look at the stacktraces, we can see there are a lot of stack frames are missing. What if we get the complete stacktrace then it wouldn't be that hard, right?
 
 The motivation of `AsyncTracker` is to show the complete and clean stacktrace for any asynchronous or synchronous code. 
 
